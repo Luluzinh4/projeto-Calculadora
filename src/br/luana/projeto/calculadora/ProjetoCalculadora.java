@@ -36,15 +36,17 @@ public class ProjetoCalculadora {
 		System.out.println("                    6 para potenciação                       ");
 		System.out.println("=============================================================");
             } else {
-		System.out.println("=============================================================");
-		System.out.println("                     Calculadora XPTO                        ");
-		System.out.println("=============================================================");
-		System.out.println("               Tipos de Operações Disponíveis                ");
-		System.out.println("                        1 para soma                          ");
-		System.out.println("                     2 para subtração                        ");
-		System.out.println("                   3 para multiplicação                      ");
-		System.out.println("                      4 para divisão                         ");
-		System.out.println("=============================================================");
+                if (op == 2) {
+                    System.out.println("=============================================================");
+                    System.out.println("                     Calculadora XPTO                        ");
+                    System.out.println("=============================================================");
+                    System.out.println("               Tipos de Operações Disponíveis                ");
+                    System.out.println("                        1 para soma                          ");
+                    System.out.println("                     2 para subtração                        ");
+                    System.out.println("                   3 para multiplicação                      ");
+                    System.out.println("                      4 para divisão                         ");
+                    System.out.println("=============================================================");
+                }
             }	
 	}
     }
@@ -83,73 +85,81 @@ public class ProjetoCalculadora {
             System.out.println("Digite o segundo número: ");
             num2 = ler.nextInt();
 	} else { //Caso seja selecionado a calculadora de real
-            System.out.println("Digite o primeiro número: ");
-            numero1 = ler.nextDouble();
-            System.out.println("Digite o segundo número: ");
-            numero2 = ler.nextDouble();
+            if (op == 2) {
+                System.out.println("Digite o primeiro número: ");
+                numero1 = ler.nextDouble();
+                System.out.println("Digite o segundo número: ");
+                numero2 = ler.nextDouble();
+            }
 	}
 
-	menu(op);
-	System.out.println("Selecione qual operação deseja realizar: ");
-	aux = ler.nextInt();
+        if (op == 1 || op == 2) {
+            menu(op);
+            System.out.println("Selecione qual operação deseja realizar: ");
+            aux = ler.nextInt();
 
-	switch (aux) {
-            case 1:
-		if (op == 1) {
-                    resultInteiro = calculadora.soma(num1, num2);
-		} else {
-                    resultReal = calculadora.somaReal(numero1, numero2);
-		}
-		break;
-            case 2:
-		if (op == 1) {
-                    resultInteiro = calculadora.subtracao(num1, num2);
-		} else {
-                    resultReal = calculadora.subtracaoReal(numero1, numero2);
-		}
-		break;
-            case 3:
-		if (op == 1) {
-                    resultInteiro = calculadora.multiplicacao(num1, num2);
-		} else {
-                    resultReal = calculadora.multiplicacaoReal(numero1, numero2);
-		}
-		break;
-            case 4:
-		if (op == 1) {
-                    resultInteiro = calculadora.div(num1, num2);
-		} else {
-                    resultReal = calculadora.divisao(numero1, numero2);
-		}
-		break;
-            case 5:
-		if (op == 1) {
-                    resultInteiro = calculadora.mod(num1, num2);
-		} else {
-                    System.out.println("Não é possível realizar esta operação com números reais");
-		}
-		break;
-            case 6:
-		if (op == 1) {
-                    resultInteiro = calculadora.potenciacao(num1, num2);
-		} else {
-                    System.out.println("Não é possível realizar esta operação com números reais");
-		}
-		break;
-            default:
-		System.out.println("Opção Inválida!");
-	}
+            switch (aux) {
+                case 1:
+                    if (op == 1) {
+                        resultInteiro = calculadora.soma(num1, num2);
+                    } else {
+                        resultReal = calculadora.somaReal(numero1, numero2);
+                    }
+                    break;
+                case 2:
+                    if (op == 1) {
+                        resultInteiro = calculadora.subtracao(num1, num2);
+                    } else {
+                        resultReal = calculadora.subtracaoReal(numero1, numero2);
+                    }
+                    break;
+                case 3:
+                    if (op == 1) {
+                        resultInteiro = calculadora.multiplicacao(num1, num2);
+                    } else {
+                        resultReal = calculadora.multiplicacaoReal(numero1, numero2);
+                    }
+                    break;
+                case 4:
+                    if (op == 1) {
+                        resultInteiro = calculadora.div(num1, num2);
+                    } else {
+                        resultReal = calculadora.divisao(numero1, numero2);
+                    }
+                    break;
+                case 5:
+                    if (op == 1) {
+                        resultInteiro = calculadora.mod(num1, num2);
+                    } else {
+                        System.out.println("Não é possível realizar esta operação com números reais");
+                    }
+                    break;
+                case 6:
+                    if (op == 1) {
+                        resultInteiro = calculadora.potenciacao(num1, num2);
+                    } else {
+                        System.out.println("Não é possível realizar esta operação com números reais");
+                    }
+                    break;
+                default:
+                    System.out.println("Opção Inválida!");
+            }
 
-	//Mostrando o resultado para o usuário
-	if (op == 1) { //Mostra o resultado caso seja uma calculado de inteiros
-            System.out.println("O resultado é: " + resultInteiro);
-	} else { //Mostra o resultado caso seja uma calculadora de reais
-            System.out.println("O resultado é: " + resultReal);
-	}
-
+            //Mostrando o resultado para o usuário
+            if (aux >= 0 && aux < 7) {
+                if (op == 1) { //Mostra o resultado caso seja uma calculado de inteiros
+                    System.out.println("O resultado é: " + resultInteiro);
+                } else { //Mostra o resultado caso seja uma calculadora de reais
+                    System.out.println("O resultado é: " + resultReal);
+                }
+            }      
+        } else {
+            System.out.println("Opção Inválida");
+        }
+	
 	//Finalizando o Scanner
         ler.close();
-
+        
     }
     
 }
